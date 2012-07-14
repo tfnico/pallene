@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+
+group='com.tfnico.examples.building'
+version='1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "file:///tmp/enterprise-repo"
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file:///tmp/enterprise-repo")
+        }
+    }
+}
+
+dependencies {
+	compile 'com.tfnico.examples.building:methone:1.1-SNAPSHOT'
+    testCompile 'junit:junit:4.10'
+}
+
